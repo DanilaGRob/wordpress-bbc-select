@@ -1,3 +1,4 @@
 import { combineReducers } from "redux";
 import Types from "./Types";
-export default combineReducers({ Types });
+import Comparisons from "./Comparisons";
+export default combineReducers({ Comparisons });
