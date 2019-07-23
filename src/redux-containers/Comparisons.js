@@ -5,16 +5,29 @@ import { getTypes } from "../dbConnection/getFromDB";
 import { addComp, removeComp, changeComp } from "../redux-actions/index";
 const assets = [
   {
-    name: "typeName",
-    showName: "Name",
-    inputType: "TEXT",
+    name: "image",
+    showName: "Select an image",
+    inputType: "IMAGE",
     className: ""
   },
   {
-    name: "units",
-    showName: "Units",
+    name: "amount",
+    showName: "Enter an amount of contribution",
     inputType: "TEXT",
-    className: "config_unitsInput"
+    className: "config_contribution"
+  },
+  {
+    name: "type",
+    showName: "Choose a type",
+    inputType: "SELECT",
+    className: "config_type",
+    getOptions: getTypes
+  },
+  {
+    name: "description",
+    showName: "Enter a description",
+    inputType: "TEXTAREA",
+    className: "config_type"
   }
 ];
 const mapStateToProps = state => ({

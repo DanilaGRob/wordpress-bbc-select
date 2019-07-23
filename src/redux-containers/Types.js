@@ -6,13 +6,13 @@ import { addType, removeType, changeType } from "../redux-actions/index";
 const assets = [
   {
     name: "typeName",
-    showName: "Name",
+    showName: "Enter a type name",
     inputType: "TEXT",
     className: ""
   },
   {
     name: "units",
-    showName: "Units",
+    showName: "Enter type units",
     inputType: "TEXT",
     className: "config_unitsInput"
   }

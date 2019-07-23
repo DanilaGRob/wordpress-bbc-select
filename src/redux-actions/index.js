@@ -25,7 +25,7 @@ export const removeComp = id => ({
   type: "REMOVE_COMP",
   props: { id }
 });
-export const changeType = (id, image, amount, type, description) => ({
-  type: "CHANGE_TYPE",
+export const changeComp = (id, image, amount, type, description) => ({
+  type: "CHANGE_COMP",
   props: { id, image, amount, type, description }
 });

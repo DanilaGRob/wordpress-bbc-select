@@ -13,7 +13,7 @@
 }
 .config_items {
   display: grid;
-  grid-template-columns: min-content min-content min-content;
+  grid-template-columns: max-content max-content max-content;
   grid-column-gap: 5px;
   .config_input {
     display: grid;
