@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import Items from "../components/Items";
-import { sendTypes } from "../dbConnection/sendToDb";
+import { sendComps } from "../dbConnection/sendToDb";
 import { getTypes } from "../dbConnection/getFromDB";
-import { addType, removeType, changeType } from "../redux-actions/index";
+import { addComp, removeComp, changeComp } from "../redux-actions/index";
 const assets = [
   {
     name: "typeName",
@@ -18,15 +18,15 @@ const assets = [
   }
 ];
 const mapStateToProps = state => ({
-  items: state.Types,
+  items: state.Comparisons,
   assets
 });
 const mapDispatchToProps = dispatch => ({
-  addFunc: itemObj => dispatch(addType(itemObj)),
-  removeFunc: id => dispatch(removeType(id)),
-  changeFunc: (id, typeName, units) =>
-    dispatch(changeType(id, units, typeName)),
-  sendItems: (items, callback) => sendTypes(items, callback),
+  addFunc: itemObj => dispatch(addComp(itemObj)),
+  removeFunc: id => dispatch(removeComp(id)),
+  changeFunc: (id, image, amount, type, description) =>
+    dispatch(changeType(id, image, amount, type, description)),
+  sendItems: (items, callback) => sendComps(items, callback),
   getItems: callback => getTypes(callback)
 });
 export default connect(
