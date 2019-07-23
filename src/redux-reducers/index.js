@@ -1,2 +1,3 @@
 import { combineReducers } from "redux";
-export default combineReducers({});
+import Types from "./Types";
+export default combineReducers({ Types });
