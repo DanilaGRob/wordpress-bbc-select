@@ -8,7 +8,7 @@ const assets = [
     name: "image",
     showName: "Select an image",
     inputType: "IMAGE",
-    className: ""
+    className: "config_image"
   },
   {
     name: "amount",

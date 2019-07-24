@@ -5,12 +5,16 @@ import "../styles/app.scss";
 export default class App extends Component {
   render() {
     return (
-      <Fragment>
-        <span className="config_title">Types</span>
-        <Types className="config_types" />
-        <span className="config_title">Comparisons</span>
-        <Comparisons className="config_comparisons" />
-      </Fragment>
+      <div className="configs">
+        <div className="config">
+          <span className="config_title">Types</span>
+          <Types className="config_types" />
+        </div>
+        <div className="config">
+          <span className="config_title">Comparisons</span>
+          <Comparisons className="config_comparisons" />
+        </div>
+      </div>
     );
   }
 }

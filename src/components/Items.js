@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Item, getAddButton } from "./Item";
 import { sendTypes } from "../dbConnection/sendToDb";
 import { getTypes } from "../dbConnection/getFromDB";
@@ -27,7 +27,7 @@ export default class Items extends Component {
     } = this.props;
 
     let itemsFormated = (
-      <div className="config_item empty">{getAddButton(addFunc)}</div>
+      <div class="config_input empty">{getAddButton(addFunc)}</div>
     );
     if (items.length != 0) {
       itemsFormated = items.map(item => {

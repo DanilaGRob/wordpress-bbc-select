@@ -11,26 +11,30 @@
   display: grid;
   grid-template-columns: max-content max-content max-content;
   grid-column-gap: 5px;
-  .config_input {
-    display: grid;
-    grid-template-rows: min-content 32px;
-    grid-column-gap: 5px;
-    align-self: end;
-  }
-  input[type="text"] {
-    width: auto;
-    border-radius: 6px;
-    height: 100%;
-    grid-row: 2;
-  }
-  .config_helper {
-    margin: 5px 0;
-  }
+}
+.config_input {
+  display: grid;
+  grid-template-rows: min-content min-content;
+  grid-column-gap: 5px;
+  align-self: end;
+}
+input[type="text"] {
+  width: auto;
+  border-radius: 6px;
+  height: 100%;
+  grid-row: 2;
+}
+.config_helper {
+  margin: 5px 0;
 }
 .config_imageSelect {
   width: 100%;
   padding-top: 10.78%;
   background: red;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  min-width: 400px;
 }
 .config_addButton {
   grid-row: 2;
@@ -79,7 +83,7 @@
   background-color: #6fc6ff;
 }
 .empty {
-  grid-template-rows: 0px 32px;
+  padding-top: 10px;
 }
 .loadingAnimation {
   height: 32px;
@@ -94,4 +98,20 @@ div .media-modal {
   margin-top: -350px;
   width: 1200px;
   height: 700px;
+}
+.configs {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-gap: 10px;
+}
+.config {
+  padding-left: 30px;
+}
+.config_comparisons {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  grid-column-gap: 5px;
+}
+.config_image {
+  grid-column: 1/4;
 }
