@@ -6,3 +6,8 @@ export const getTypes = callback => {
     callback(data);
   });
 };
+export const getComps = callback => {
+  axios.post(PLUGIN_DIR + "/getCompsFromDB.php", {}).then(({ data }) => {
+    callback(data);
+  });
+};

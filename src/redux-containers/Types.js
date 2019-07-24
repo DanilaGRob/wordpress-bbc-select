@@ -24,8 +24,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addFunc: itemObj => dispatch(addType(itemObj)),
   removeFunc: id => dispatch(removeType(id)),
-  changeFunc: (id, typeName, units) =>
-    dispatch(changeType(id, units, typeName)),
+  changeFunc: (id, value) => dispatch(changeType(id, value)),
   sendItems: (items, callback) => sendTypes(items, callback),
   getItems: callback => getTypes(callback)
 });

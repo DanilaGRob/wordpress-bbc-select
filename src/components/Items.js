@@ -22,8 +22,10 @@ export default class Items extends Component {
       removeFunc,
       changeFunc,
       assets,
-      sendItems
+      sendItems,
+      className
     } = this.props;
+
     let itemsFormated = (
       <div className="config_item empty">{getAddButton(addFunc)}</div>
     );
@@ -35,6 +37,7 @@ export default class Items extends Component {
             {...{ assets, removeFunc, addFunc, changeFunc }}
             last={false}
             key={item.id}
+            className={className}
           />
         );
       });
@@ -45,7 +48,7 @@ export default class Items extends Component {
     }
     if (this.state.loaded)
       return (
-        <div className="config_items">
+        <div className={"config_items " + className}>
           {itemsFormated}
           <div
             className="clickable config_saveButton btn blue"

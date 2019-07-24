@@ -7,9 +7,9 @@ export const removeType = id => ({
   type: "REMOVE_TYPE",
   props: { id }
 });
-export const changeType = (id, units, typeName) => ({
+export const changeType = (id, value) => ({
   type: "CHANGE_TYPE",
-  props: { id, units, typeName }
+  props: { id, value }
 });
 export const addComp = ({
   id = uniqid(),
@@ -25,7 +25,7 @@ export const removeComp = id => ({
   type: "REMOVE_COMP",
   props: { id }
 });
-export const changeComp = (id, image, amount, type, description) => ({
+export const changeComp = (id, value) => ({
   type: "CHANGE_COMP",
-  props: { id, image, amount, type, description }
+  props: { id, value }
 });

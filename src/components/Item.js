@@ -1,5 +1,7 @@
-import React, { Component, createRef, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import { PLUGIN_DIR } from "../../constants";
+import TextInput from "./TextInput";
+import ImageInput from "./ImageInput";
 import uniqid from "uniqid";
 
 const getAddButton = addFunc => (
@@ -9,7 +11,6 @@ const getAddButton = addFunc => (
     onClick={addFunc}
   />
 );
-
 const getRemoveButton = (removeFunc, id) => (
   <img
     src={PLUGIN_DIR + "/src/imgs/remove.svg"}
@@ -17,70 +18,45 @@ const getRemoveButton = (removeFunc, id) => (
     onClick={() => removeFunc(id)}
   />
 );
-export default class Item extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputs: []
-    };
-    props.assets.map(a => {
-      this[a.name] = createRef();
-    });
-  }
-  updateTheComponent() {
-    const { assets } = this.props;
 
-    assets.map(a => {
-      switch (a.inputType) {
-        case "TEXT": {
-          this[a.name].current.value = this.props[a.name]
-            ? this.props[a.name]
-            : "";
-          break;
-        }
-      }
-    });
-  }
-  componentWillMount() {
-    const inputs = [];
-    const { assets } = this.props;
-    assets.map(a => {
-      switch (a.inputType) {
-        case "TEXT": {
-          inputs.push(
-            <div className={"config_input " + a.className} key={uniqid()}>
-              <span className="config_helper">{a.showName}</span>
-              <input
-                type="text"
-                onBlur={this.handleChange}
-                ref={this[a.name]}
-              />
-            </div>
-          );
-          break;
-        }
-      }
-    });
-    this.setState({ inputs });
-  }
-  componentDidMount() {
-    this.updateTheComponent();
-  }
-  handleChange = () => {
-    const { changeFunc, id, assets } = this.props;
-    const inputs = assets.map(a =>
-      this[a.name].current.value == "" ? null : this[a.name].current.value
-    );
-    changeFunc(id, ...inputs);
+export default class Item extends Component {
+  handleChange = (name, value) => {
+    const { changeFunc, id } = this.props;
+    changeFunc(id, { [name]: value });
   };
   render() {
-    const { id, addFunc, removeFunc, last } = this.props;
-    const inputs = [];
-
+    const { id, addFunc, removeFunc, last, assets } = this.props;
+    const inputs = assets.map(asset => {
+      const id = uniqid();
+      switch (asset.inputType) {
+        case "TEXT": {
+          return (
+            <TextInput
+              {...asset}
+              value={this.props[asset.name]}
+              handleChange={this.handleChange}
+              id={id}
+              key={id}
+            />
+          );
+        }
+        case "IMAGE": {
+          return (
+            <ImageInput
+              {...asset}
+              value={this.props[asset.name]}
+              handleChange={this.handleChange}
+              key={id}
+              id={id}
+            />
+          );
+        }
+      }
+    });
     return (
       <Fragment>
-        {this.state.inputs}
-        <div className="config_input">
+        {inputs}
+        <div className="config_input ">
           {last ? (
             <Fragment>
               {getAddButton(addFunc)}

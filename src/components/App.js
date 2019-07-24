@@ -7,9 +7,9 @@ export default class App extends Component {
     return (
       <Fragment>
         <span className="config_title">Types</span>
-        <Types />
+        <Types className="config_types" />
         <span className="config_title">Comparisons</span>
-        <Comparisons />
+        <Comparisons className="config_comparisons" />
       </Fragment>
     );
   }

@@ -34,6 +34,7 @@ add_shortcode( 'bbc-select', 'app');
 
 add_action( 'admin_menu', 'admin_menu' );  
 function admin(){
+    wp_enqueue_media();
     wp_enqueue_script( 'react_script', PLUGIN_DIR . '/dist/admin.js');
     echo '<div id="app"></div>';
 }
@@ -71,15 +72,16 @@ function my_plugin_create_db() {
 
 	dbDelta( $sql );
 
-	// $table_name = $wpdb->prefix . 'zb_exceptionTimes';
-	// $sql = "CREATE TABLE $table_name (
-	// 	id varchar(255) NOT NULL,
-	// 	timeOBJ varchar(255) ,
-	// 	dateOBJ varchar(255) ,
-	// 	statusOBJ varchar(255) NOT NULL
-	// 	UNIQUE KEY id (id)
-	// ) $charset_collate;";
+	$table_name = $wpdb->prefix . 'bbcs_comps';
+	$sql = "CREATE TABLE $table_name (
+		id varchar(255) NOT NULL,
+		image varchar(255) ,
+		amount varchar(255) ,
+		type varchar(255),
+        description varchar(512),
+		UNIQUE KEY id (id)
+	) $charset_collate;";
 
-	// dbDelta( $sql );
+	dbDelta( $sql );
 }
 register_activation_hook( __FILE__, 'my_plugin_create_db' );
