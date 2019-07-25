@@ -18,27 +18,30 @@
   grid-column-gap: 5px;
   align-self: end;
 }
-input[type="text"] {
+input,
+select,
+textarea {
   width: auto;
   border-radius: 6px;
   height: 100%;
   grid-row: 2;
+  height: auto !important;
 }
 .config_helper {
   margin: 5px 0;
+  padding-right: 20px;
 }
 .config_imageSelect {
   width: 100%;
   padding-top: 10.78%;
-  background: red;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
-  min-width: 400px;
+  border: dashed 2px #596271;
 }
 .config_addButton {
-  grid-row: 2;
   height: 22px;
+  grid-row: 2;
   align-self: center;
 }
 .config_saveButton {
@@ -114,4 +117,15 @@ div .media-modal {
 }
 .config_image {
   grid-column: 1/4;
+}
+.config_buttons {
+  display: grid;
+  grid-template-rows: auto 29px;
+  grid-column-gap: 5px;
+}
+.config_textarea {
+  grid-column: 1/3;
+}
+.config_type {
+  grid-column: 2/4;
 }

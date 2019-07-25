@@ -27,7 +27,7 @@ export default class Items extends Component {
     } = this.props;
 
     let itemsFormated = (
-      <div class="config_input empty">{getAddButton(addFunc)}</div>
+      <div className="config_input empty">{getAddButton(addFunc)}</div>
     );
     if (items.length != 0) {
       itemsFormated = items.map(item => {

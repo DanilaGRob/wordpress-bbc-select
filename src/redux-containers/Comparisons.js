@@ -3,36 +3,35 @@ import Items from "../components/Items";
 import { sendComps } from "../dbConnection/sendToDb";
 import { getComps, getTypes } from "../dbConnection/getFromDB";
 import { addComp, removeComp, changeComp } from "../redux-actions/index";
-const assets = [
-  {
-    name: "image",
-    showName: "Select an image",
-    inputType: "IMAGE",
-    className: "config_image"
-  },
-  {
-    name: "amount",
-    showName: "Enter an amount of contribution",
-    inputType: "TEXT",
-    className: "config_contribution"
-  },
-  {
-    name: "type",
-    showName: "Choose a type",
-    inputType: "SELECT",
-    className: "config_type",
-    getOptions: getTypes
-  },
-  {
-    name: "description",
-    showName: "Enter a description",
-    inputType: "TEXTAREA",
-    className: "config_type"
-  }
-];
 const mapStateToProps = state => ({
   items: state.Comparisons,
-  assets
+  assets: [
+    {
+      name: "image",
+      showName: "Select an image",
+      inputType: "IMAGE",
+      className: "config_image"
+    },
+    {
+      name: "amount",
+      showName: "Enter an amount of contribution",
+      inputType: "TEXT",
+      className: "config_contribution"
+    },
+    {
+      name: "type",
+      showName: "Choose a type",
+      inputType: "SELECT",
+      className: "config_type",
+      options: state.Types
+    },
+    {
+      name: "description",
+      showName: "Enter a description",
+      inputType: "TEXTAREA",
+      className: "config_textarea"
+    }
+  ]
 });
 const mapDispatchToProps = dispatch => ({
   addFunc: itemObj => dispatch(addComp(itemObj)),

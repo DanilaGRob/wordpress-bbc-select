@@ -1,4 +1,5 @@
 import React, { Component, createRef } from "react";
+import { PLUGIN_DIR } from "../../constants";
 export default class ImageInput extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +20,10 @@ export default class ImageInput extends Component {
       <div className={"config_input " + className}>
         <span className="config_helper">{showName}</span>
         <div
-          className="config_imageSelect"
+          className="config_imageSelect clickable"
+          style={{
+            backgroundImage: `url("${PLUGIN_DIR}/src/imgs/uploadImage.svg")`
+          }}
           onClick={() => {
             this.frame.open();
             this.frame.on("select", () => {
@@ -31,7 +35,7 @@ export default class ImageInput extends Component {
               this[name].current.style.backgroundImage = `url("${
                 attachment.url
               }")`;
-              console.log(this[name].current.style);
+              this[name].current.style.border = "none";
             });
           }}
           ref={this[name]}
