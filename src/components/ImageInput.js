@@ -4,6 +4,13 @@ export default class ImageInput extends Component {
   constructor(props) {
     super(props);
     this[props.name] = createRef();
+    this.state = {
+      style: {
+        backgroundImage: props.value
+          ? `url("${PLUGIN_DIR}/src/imgs/uploadImage.svg")`
+          : `url("${props.value}")`
+      }
+    };
   }
 
   frame = wp.media({
@@ -15,15 +22,19 @@ export default class ImageInput extends Component {
     multiple: false
   });
   render() {
-    const { className, showName, name } = this.props;
+    const { className, showName, name, handleChange, value } = this.props;
+    const style =
+      value == null
+        ? {
+            backgroundImage: `url("${PLUGIN_DIR}/src/imgs/uploadImage.svg")`
+          }
+        : { backgroundImage: `url("${value}")`, border: "none" };
     return (
       <div className={"config_input " + className}>
         <span className="config_helper">{showName}</span>
         <div
           className="config_imageSelect clickable"
-          style={{
-            backgroundImage: `url("${PLUGIN_DIR}/src/imgs/uploadImage.svg")`
-          }}
+          style={style}
           onClick={() => {
             this.frame.open();
             this.frame.on("select", () => {
@@ -32,10 +43,7 @@ export default class ImageInput extends Component {
                 .get("selection")
                 .first()
                 .toJSON();
-              this[name].current.style.backgroundImage = `url("${
-                attachment.url
-              }")`;
-              this[name].current.style.border = "none";
+              handleChange(name, attachment.url);
             });
           }}
           ref={this[name]}

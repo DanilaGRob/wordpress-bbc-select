@@ -1,4 +1,3 @@
-import uniqid from "uniqid";
 export const addType = ({ id = uniqid(), units = null, typeName = null }) => ({
   type: "ADD_TYPE",
   props: { id, units, typeName }
@@ -12,7 +11,7 @@ export const changeType = (id, value) => ({
   props: { id, value }
 });
 export const addComp = ({
-  id = uniqid(),
+  id,
   image = null,
   amount = null,
   type = null,

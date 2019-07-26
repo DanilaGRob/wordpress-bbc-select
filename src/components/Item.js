@@ -10,7 +10,7 @@ const getAddButton = addFunc => (
   <img
     src={PLUGIN_DIR + "/src/imgs/add.svg"}
     className="config_addButton clickable"
-    onClick={addFunc}
+    onClick={() => addFunc({ id: uniqid() })}
   />
 );
 const getRemoveButton = (removeFunc, id) => (

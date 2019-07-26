@@ -19,7 +19,7 @@ export default class TextInput extends Component {
       <div className={"config_input " + className}>
         <span className="config_helper">{showName}</span>
         <textarea
-          rows="8"
+          rows="4"
           cols="50"
           onBlur={e => handleChange(name, e.currentTarget.value)}
           ref={this[name]}

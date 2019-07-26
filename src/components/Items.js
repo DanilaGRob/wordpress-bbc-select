@@ -25,7 +25,6 @@ export default class Items extends Component {
       sendItems,
       className
     } = this.props;
-
     let itemsFormated = (
       <div className="config_input empty">{getAddButton(addFunc)}</div>
     );
