@@ -28,3 +28,20 @@ export const changeComp = (id, value) => ({
   type: "CHANGE_COMP",
   props: { id, value }
 });
+export const addFood = ({
+  id,
+  image = null,
+  description = null,
+  types = []
+}) => ({
+  type: "ADD_FOOD",
+  props: { id, image, description, types }
+});
+export const removeFood = id => ({
+  type: "REMOVE_FOOD",
+  props: { id }
+});
+export const changeFood = (id, value) => ({
+  type: "CHANGE_FOOD",
+  props: { id, value }
+});

@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from "react";
-import { Item, getAddButton } from "./Item";
-import { sendTypes } from "../dbConnection/sendToDb";
-import { getTypes } from "../dbConnection/getFromDB";
+import React, { Component } from "react";
+import { Item } from "./Item";
 import { PLUGIN_DIR } from "../../constants";
+import AddButton from "./AddButton";
+import { Scrollbars } from "react-custom-scrollbars";
+import SaveButton from "./SaveButton";
 export default class Items extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +16,9 @@ export default class Items extends Component {
       this.setState({ loaded: true });
     });
   }
+  changeProgress(progress) {
+    this.setState(progress);
+  }
   render() {
     const {
       items,
@@ -26,7 +30,9 @@ export default class Items extends Component {
       className
     } = this.props;
     let itemsFormated = (
-      <div className="config_input empty">{getAddButton(addFunc)}</div>
+      <div className="config_input empty">
+        {<AddButton addFunc={addFunc} />}
+      </div>
     );
     if (items.length != 0) {
       itemsFormated = items.map(item => {
@@ -47,31 +53,20 @@ export default class Items extends Component {
     }
     if (this.state.loaded)
       return (
-        <div className={"config_items " + className}>
-          {itemsFormated}
-          <div
-            className="clickable config_saveButton btn blue"
-            onClick={() => {
-              this.setState({
-                progress: (
-                  <img src={PLUGIN_DIR + "/src/imgs/loading_white.svg"} />
-                )
-              });
-              sendItems(items, () => {
-                this.setState({
-                  progress: <img src={PLUGIN_DIR + "/src/imgs/done.svg"} />
-                });
-                setTimeout(() => {
-                  this.setState({
-                    progress: "Save"
-                  });
-                }, 1000);
-              });
-            }}
-          >
-            <span>{this.state.progress}</span>
+        <Scrollbars style={{ width: 400, height: "70vh" }} autoHide>
+          <div className={"config_items " + className}>
+            {itemsFormated}{" "}
+            {sendItems ? (
+              <SaveButton
+                sendItems={sendItems}
+                progress={this.state.progress}
+                changeProgress={this.changeProgress}
+              />
+            ) : (
+              ""
+            )}
           </div>
-        </div>
+        </Scrollbars>
       );
     else
       return (

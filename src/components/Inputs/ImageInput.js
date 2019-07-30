@@ -1,5 +1,5 @@
 import React, { Component, createRef } from "react";
-import { PLUGIN_DIR } from "../../constants";
+import { PLUGIN_DIR } from "../../../constants";
 export default class ImageInput extends Component {
   constructor(props) {
     super(props);
@@ -23,12 +23,11 @@ export default class ImageInput extends Component {
   });
   render() {
     const { className, showName, name, handleChange, value } = this.props;
-    const style =
-      value == null
-        ? {
-            backgroundImage: `url("${PLUGIN_DIR}/src/imgs/uploadImage.svg")`
-          }
-        : { backgroundImage: `url("${value}")`, border: "none" };
+    const style = !value
+      ? {
+          backgroundImage: `url("${PLUGIN_DIR}/src/imgs/uploadImage.svg")`
+        }
+      : { backgroundImage: `url("${value}")`, border: "none" };
     return (
       <div className={"config_input " + className}>
         <span className="config_helper">{showName}</span>

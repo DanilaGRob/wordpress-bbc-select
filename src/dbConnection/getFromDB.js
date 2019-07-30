@@ -15,3 +15,10 @@ export const getComps = callback => {
       callback(data);
     });
 };
+export const getFood = callback => {
+  axios
+    .post(PLUGIN_DIR + "/getFromDB.php", { name: "food" })
+    .then(({ data }) => {
+      callback(data);
+    });
+};
