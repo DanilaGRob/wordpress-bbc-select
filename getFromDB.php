@@ -20,7 +20,8 @@ else {
             $food_types = $wpdb->get_results("
                 SELECT FT.id, FT.amount, FT.type, FT.foodId
                 FROM " . $table_name . "_types AS FT
-                INNER JOIN $table_name ON FT.foodId=$table_name.id;
+                INNER JOIN $table_name ON FT.foodId=$table_name.id
+                WHERE (FT.foodId='$food_item->id');
             ");
             $food_withTypes->types = $food_types;
             return $food_withTypes;

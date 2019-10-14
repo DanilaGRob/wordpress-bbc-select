@@ -1,82 +1,107 @@
-import React, { Component } from "react";
-import { Item } from "./Item";
+import React, { Component, cloneElement, createRef, Fragment } from "react";
 import { PLUGIN_DIR } from "../../constants";
 import AddButton from "./AddButton";
-import { Scrollbars } from "react-custom-scrollbars";
 import SaveButton from "./SaveButton";
+import uniqid from "uniqid";
+import InputBlock from "./InputBlock";
+import PerfectScrollbar from "perfect-scrollbar";
 export default class Items extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false,
+      loaded: props.getItems ? false : true,
       progress: "Save"
     };
-    props.getItems(items => {
-      items.map(item => props.addFunc(item));
-      this.setState({ loaded: true });
-    });
+    //Initial item load
+    if (props.getItems)
+      props.getItems(items => {
+        items.map(item => props.addFunc(item));
+        this.setState({ loaded: true });
+      });
+    ////////////
+    this.items = createRef();
   }
-  changeProgress(progress) {
+  componentDidMount() {
+    new PerfectScrollbar(this.items.current, { wheelSpeed: 0.4 });
+  }
+  changeProgress = progress => {
     this.setState(progress);
-  }
+  };
   render() {
     const {
-      items,
+      values,
       addFunc,
       removeFunc,
       changeFunc,
-      assets,
+      inputs,
       sendItems,
       className
     } = this.props;
-    let itemsFormated = (
+    let items = (
       <div className="config_input empty">
         {<AddButton addFunc={addFunc} />}
       </div>
     );
-    if (items.length != 0) {
-      itemsFormated = items.map(item => {
+
+    if (values.length != 0) {
+      /////Mapping all the values into items var
+      items = values.map(value => {
         return (
-          <Item
-            {...item}
-            {...{ assets, removeFunc, addFunc, changeFunc }}
+          <InputBlock
             last={false}
-            key={item.id}
-            className={className}
+            key={uniqid()}
+            {...{ removeFunc, addFunc, changeFunc }}
+            id={value.id}
+            inputs={inputs.map(input => {
+              return cloneElement(input, {
+                ...input.props,
+                value: value[input.props.name],
+                type: value.type,
+                key: uniqid(),
+                parentId: value.id,
+                handleChange: (name, newValue) => {
+                  changeFunc(value.id, { [name]: newValue });
+                }
+              });
+            })}
           />
         );
       });
-      const props = itemsFormated[itemsFormated.length - 1].props;
-      itemsFormated[itemsFormated.length - 1] = (
-        <Item {...props} last={true} key={props.id} />
-      );
+      //////////
+
+      ////Adding las prop to the last item
+      const lastInput = items[items.length - 1];
+      items[items.length - 1] = cloneElement(lastInput, {
+        ...lastInput.props,
+        last: true
+      });
+      //////
     }
-    if (this.state.loaded)
-      return (
-        <Scrollbars style={{ width: 400, height: "70vh" }} autoHide>
-          <div className={"config_items " + className}>
-            {itemsFormated}{" "}
-            {sendItems ? (
-              <SaveButton
-                sendItems={sendItems}
-                progress={this.state.progress}
-                changeProgress={this.changeProgress}
-              />
-            ) : (
-              ""
-            )}
-          </div>
-        </Scrollbars>
-      );
-    else
-      return (
-        <div className="config_items">
-          <img
-            src={PLUGIN_DIR + "/src/imgs/loading.svg"}
-            alt=""
-            className="loadingAnimation"
-          />
+    const content = this.state.loaded ? (
+      <Fragment>{items}</Fragment>
+    ) : (
+      <img
+        src={PLUGIN_DIR + "/src/imgs/loading.svg"}
+        alt=""
+        className="loadingAnimation"
+      />
+    );
+    return (
+      <div className={"config_items " + className}>
+        <div className="config_itemWrapper" ref={this.items}>
+          {content}
         </div>
-      );
+        {sendItems ? (
+          <SaveButton
+            items={values}
+            sendItems={sendItems}
+            progress={this.state.progress}
+            changeProgress={this.changeProgress}
+          />
+        ) : (
+          ""
+        )}
+      </div>
+    );
   }
 }

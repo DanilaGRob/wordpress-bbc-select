@@ -72,8 +72,10 @@ function my_plugin_create_db()
 		id varchar(255) NOT NULL,
 		units varchar(255),
 		typeName varchar(255),
+		color varchar(255),
+        main boolean,
 		UNIQUE KEY id (id)
-	) $charset_collate;";
+	) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
 
     dbDelta($sql);
 
@@ -84,18 +86,21 @@ function my_plugin_create_db()
 		amount varchar(255) ,
 		type varchar(255),
         description varchar(512),
+        units varchar(255),
 		UNIQUE KEY id (id)
-	) $charset_collate;";
+	) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
 
     dbDelta($sql);
 
     $table_name = $wpdb->prefix . 'bbcs_food';
     $sql = "CREATE TABLE $table_name (
 		id varchar(255) NOT NULL,
-		image varchar(255) ,
+        image varchar(255) ,
+		name varchar(255) ,
         description varchar(512),
+        type varchar(255) ,
 		PRIMARY KEY id (id)
-	) $charset_collate;";
+	) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
 
     dbDelta($sql);
 
@@ -105,8 +110,10 @@ function my_plugin_create_db()
     	amount varchar(255) ,
     	type varchar(255),
         foodId varchar(255),
-    	FOREIGN KEY (foodId) REFERENCES " . $wpdb->prefix . "bbcs_food(id)
-    ) $charset_collate;";
+        FOREIGN KEY (foodId) REFERENCES " . $wpdb->prefix . "bbcs_food(id) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE
+    ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
 
     dbDelta($sql);
 }

@@ -3,28 +3,73 @@ import Items from "../components/Items";
 import { sendFood } from "../dbConnection/sendToDb";
 import { getFood } from "../dbConnection/getFromDB";
 import { addFood, removeFood, changeFood } from "../redux-actions/index";
-
+import ImageInput from "../components/Inputs/ImageInput";
+import TextAreaInput from "../components/Inputs/TextAreaInput";
+import InputList from "../components/Inputs/InputList";
+import TextInput from "../components/Inputs/TextInput";
+import React from "react";
+import SelectInput from "../components/Inputs/SelectInput";
 const mapStateToProps = state => ({
-  items: state.Food,
-  assets: [
-    {
-      name: "image",
-      showName: "Choose an image",
-      inputType: "IMAGE",
-      className: "coonfig_foodImage"
-    },
-    {
-      name: "description",
-      showName: "Enter a discription",
-      inputType: "TEXTAREA",
-      className: "coonfig_foodDescription"
-    },
-    {
-      name: "types",
-      showName: "Please select the types",
-      inputType: "INPUTLIST",
-      className: "config_inputList"
-    }
+  values: state.Food.items,
+  inputs: [
+    <TextInput
+      name="name"
+      helperText="Enter a name of a food or drink"
+      className="config_name"
+    />,
+    <SelectInput
+      name="type"
+      className="config_food_type_select"
+      helperText="Please select a type"
+      options={[
+        {
+          id: "drinks",
+          value: "drinks",
+          typeName: "drinks"
+        },
+        {
+          id: "fruit & veg",
+          value: "fruit & veg",
+          typeName: "fruit & veg"
+        },
+        {
+          id: "proteins",
+          value: "proteins",
+          typeName: "proteins"
+        },
+        {
+          id: "starches",
+          value: "starches",
+          typeName: "starches"
+        },
+        {
+          id: "chocolates",
+          value: "chocolates",
+          typeName: "chocolates"
+        },
+        {
+          id: "milks",
+          value: "milks",
+          typeName: "milks"
+        }
+      ]}
+    />,
+    <ImageInput
+      name="image"
+      helperText="Choose an image"
+      className="config_foodImage"
+    />,
+    <TextAreaInput
+      name="description"
+      helperText="Enter a description"
+      autoSize={false}
+      className="config_foodDescription"
+    />,
+    <InputList
+      name="types"
+      helperText="Please select the types"
+      className="config_inputList"
+    />
   ]
 });
 const mapDispatchToProps = dispatch => ({

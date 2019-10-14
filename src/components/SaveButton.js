@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-
+import { PLUGIN_DIR } from "../../constants";
 export default class SaveButton extends Component {
   render() {
-    const { progress, changeProgress } = this.props;
+    const { progress, changeProgress, sendItems, items } = this.props;
     return (
       <div
         className="clickable config_saveButton btn blue"

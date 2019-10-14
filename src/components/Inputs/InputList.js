@@ -1,19 +1,19 @@
 import React, { Component, createRef } from "react";
+import FoodTypes from "../../redux-containers/FoodTypes";
 export default class InputList extends Component {
   constructor(props) {
     super(props);
     this[props.name] = createRef();
   }
   render() {
-    const { className, showName, name, handleChange, value } = this.props;
-    console.log(value);
+    const { helperText, className, parentId, value } = this.props;
     return (
       <div className={"config_input " + className}>
-        <span className="config_helper">{showName}</span>
-        <input
-          type="text"
-          onBlur={e => handleChange(name, e.currentTarget.value)}
-          ref={this[name]}
+        <span className="config_helper">{helperText}</span>
+        <FoodTypes
+          foodId={parentId}
+          values={value}
+          className="config_foodTypes"
         />
       </div>
     );

@@ -14,10 +14,19 @@ export default class TextInput extends Component {
     this[this.props.name].current.value = this.props.value;
   }
   render() {
-    const { className, showName, name, handleChange } = this.props;
+    const {
+      className,
+      helperText,
+      name,
+      handleChange,
+      type,
+      options
+    } = this.props;
+    const typeObj = options ? options.find(option => option.id == type) : "";
+    const units = typeObj ? " for every " + typeObj.units : "";
     return (
       <div className={"config_input " + className}>
-        <span className="config_helper">{showName}</span>
+        <span className="config_helper">{helperText + units}</span>
         <input
           type="text"
           onBlur={e => handleChange(name, e.currentTarget.value)}

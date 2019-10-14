@@ -1,35 +1,37 @@
 import React, { Component, createRef } from "react";
 import uniqid from "uniqid";
-export default class SelectInput extends Component {
+import { PLUGIN_DIR } from "../../../constants";
+export default class SelectInputF extends Component {
   constructor(props) {
     super(props);
     this[props.name] = createRef();
   }
   render() {
-    const { className, helperText, name, handleChange, options } = this.props;
+    const { helperText, name, onChange, options, emptyError } = this.props;
     let { value } = this.props;
     if (!value) value = "empty";
-    else if (!options.find(option => option.id == value)) value = "null";
     return (
-      <div className={"config_input " + className}>
-        <span className="config_helper">{helperText}</span>
+      <div className="input">
+        <span className="helper">{helperText}</span>
         <select
           onChange={e => {
-            handleChange(name, e.currentTarget.value);
+            onChange(e.currentTarget.value);
           }}
+          className="clickable"
           ref={this[name]}
           value={value}
+          style={{
+            backgroundImage: `url('${PLUGIN_DIR +
+              "/src/imgs/expand-button.svg"}')`
+          }}
         >
           {options.map(option => (
             <option value={option.id} key={uniqid()}>
-              {option.typeName}
+              {option.name}
             </option>
           ))}
           <option hidden value="empty">
-            Select a type
-          </option>
-          <option hidden value="null">
-            Doesn't exist
+            {emptyError}
           </option>
         </select>
       </div>

@@ -1,0 +1,18 @@
+.config_items.config_comparisons {
+  .config_item {
+    grid-template-columns: 1fr 64px 1fr;
+  }
+  .config_buttons {
+    grid-column: 1/4;
+    margin-top: 10px;
+  }
+  .config_contribution {
+    grid-column: 1/2;
+  }
+  .config_textarea {
+    grid-column: 1/4;
+  }
+  .config_image {
+    grid-column: 1/4;
+  }
+}

@@ -1,36 +1,40 @@
 import { connect } from "react-redux";
 import Items from "../components/Items";
 import { sendComps } from "../dbConnection/sendToDb";
-import { getComps, getTypes } from "../dbConnection/getFromDB";
+import { getComps } from "../dbConnection/getFromDB";
 import { addComp, removeComp, changeComp } from "../redux-actions/index";
+import ImageInput from "../components/Inputs/ImageInput";
+import TextInput from "../components/Inputs/TextInput";
+import SelectInput from "../components/Inputs/SelectInput";
+import TextAreaInput from "../components/Inputs/TextAreaInput";
+import React from "react";
 const mapStateToProps = state => ({
-  items: state.Comparisons,
-  assets: [
-    {
-      name: "image",
-      showName: "Select an image",
-      inputType: "IMAGE",
-      className: "config_image"
-    },
-    {
-      name: "amount",
-      showName: "Enter an amount of contribution",
-      inputType: "TEXT",
-      className: "config_contribution"
-    },
-    {
-      name: "type",
-      showName: "Choose a type",
-      inputType: "SELECT",
-      className: "config_type",
-      options: state.Types
-    },
-    {
-      name: "description",
-      showName: "Enter a description",
-      inputType: "TEXTAREA",
-      className: "config_textarea"
-    }
+  values: state.Comparisons.items,
+  inputs: [
+    <ImageInput
+      name="image"
+      helperText="Select an image"
+      className="config_image"
+    />,
+    <TextInput
+      name="amount"
+      helperText="Amount"
+      className="config_contribution"
+      options={state.Types.types}
+    />,
+    <TextInput name="units" helperText="Units" className="config_compUnits" />,
+    <SelectInput
+      name="type"
+      helperText="Choose a type"
+      className="config_type"
+      options={state.Types.types}
+    />,
+    <TextAreaInput
+      name="description"
+      autoSize={true}
+      helperText="Enter a description"
+      className="config_textarea"
+    />
   ]
 });
 const mapDispatchToProps = dispatch => ({

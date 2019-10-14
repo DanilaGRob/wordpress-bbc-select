@@ -1,0 +1,50 @@
+.config_food {
+  .config_buttons {
+    grid-column: 1/5;
+    margin-top: 10px;
+  }
+  .config_item {
+    grid-template-columns: 1fr 1fr 1fr 0px !important;
+  }
+  .config_imageSelect {
+    padding-top: 100%;
+  }
+  .config_inputList {
+    grid-column: 1/5;
+  }
+  .config_food_type_select {
+    grid-column: 3/5;
+  }
+  .config_foodDescription {
+    height: 100%;
+    grid-column: 2/5;
+    textarea {
+      height: 100%;
+    }
+  }
+  .config_input {
+    grid-template-rows: min-content auto;
+  }
+  .config_name {
+    grid-column: 1/3;
+  }
+  .config_items.config_foodTypes {
+    width: auto;
+    .config_itemWrapper {
+      max-height: 300px;
+    }
+    max-height: 300px !important;
+    .config_item {
+      grid-column: 1/4;
+      grid-template-columns: 1fr 1fr 64px !important;
+    }
+    .config_buttons {
+      grid-column: initial;
+    }
+    .config_food_type {
+      select {
+        width: 100%;
+      }
+    }
+  }
+}

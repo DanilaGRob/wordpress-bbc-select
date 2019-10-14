@@ -1,3 +1,7 @@
+@import "./comparisons.scss";
+@import "./food.scss";
+@import "./types.scss";
+@import "../../node_modules/perfect-scrollbar/css/perfect-scrollbar.css";
 #app {
   margin-top: 40px;
 }
@@ -7,29 +11,29 @@
 .config_title {
   font-size: 32px;
 }
-.config_types {
+.config_items {
   .config_item {
+    box-sizing: border-box;
+    padding: 15px;
     display: grid;
-    grid-template-columns: max-content max-content max-content;
+    grid-template-columns: 1fr 1fr 64px;
     grid-column-gap: 5px;
-    width: min-content;
-    margin-bottom: 20px;
+    width: 100%;
   }
-}
-.config_input {
-  display: grid;
-  grid-template-rows: min-content min-content;
-  grid-column-gap: 5px;
-  align-self: end;
+  .config_item:nth-child(even) {
+    background: #e7e7e7;
+  }
+  .config_item:nth-child(odd) {
+    background: #f1f1f1;
+  }
 }
 input,
 select,
 textarea {
-  width: auto;
+  width: 100%;
   border-radius: 6px;
-  height: 100%;
   grid-row: 2;
-  height: auto !important;
+  max-height: 200px;
 }
 .config_helper {
   margin: 5px 0;
@@ -40,8 +44,9 @@ textarea {
   padding-top: 10.78%;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: center;
   border: dashed 2px #596271;
+  box-sizing: border-box;
 }
 .config_addButton {
   height: 22px;
@@ -86,12 +91,12 @@ textarea {
   background-color: #55acee;
   box-shadow: 0px 5px 0px 0px #3c93d5;
 }
-
 .blue:hover {
   background-color: #6fc6ff;
 }
 .empty {
-  padding-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 .loadingAnimation {
   height: 32px;
@@ -109,20 +114,12 @@ div .media-modal {
 }
 .configs {
   display: grid;
-  grid-template-columns: repeat(3, max-content);
-  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  grid-gap: 80px;
 }
 .config {
   padding: 10px;
-}
-.config_comparisons {
-  .config_item {
-    display: grid;
-    grid-template-columns: max-content max-content max-content;
-    grid-column-gap: 5px;
-    width: min-content;
-    margin-bottom: 20px;
-  }
 }
 .config_image {
   grid-column: 1/4;
@@ -131,10 +128,22 @@ div .media-modal {
   display: grid;
   grid-template-rows: auto 29px;
   grid-column-gap: 5px;
+  justify-content: center;
 }
 .config_textarea {
   grid-column: 1/3;
 }
-.config_type {
-  grid-column: 2/4;
+.config_input {
+  display: grid;
+  grid-template-rows: min-content min-content;
+  grid-column-gap: 5px;
+  align-self: end;
+}
+.invisible {
+  display: none;
+}
+.config_itemWrapper {
+  position: relative;
+  max-height: 67vh;
+  overflow: hidden;
 }

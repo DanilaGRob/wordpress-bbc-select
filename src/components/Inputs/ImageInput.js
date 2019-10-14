@@ -12,7 +12,6 @@ export default class ImageInput extends Component {
       }
     };
   }
-
   frame = wp.media({
     frame: "select",
     title: "Select an image",
@@ -22,7 +21,7 @@ export default class ImageInput extends Component {
     multiple: false
   });
   render() {
-    const { className, showName, name, handleChange, value } = this.props;
+    const { className, helperText, name, handleChange, value } = this.props;
     const style = !value
       ? {
           backgroundImage: `url("${PLUGIN_DIR}/src/imgs/uploadImage.svg")`
@@ -30,7 +29,7 @@ export default class ImageInput extends Component {
       : { backgroundImage: `url("${value}")`, border: "none" };
     return (
       <div className={"config_input " + className}>
-        <span className="config_helper">{showName}</span>
+        <span className="config_helper">{helperText}</span>
         <div
           className="config_imageSelect clickable"
           style={style}

@@ -9,8 +9,16 @@ export const sendTypes = (types, callback) => {
     });
 };
 export const sendComps = (comps, callback) => {
+  console.log(comps);
   axios
     .post(PLUGIN_DIR + "/sendToDB.php", { name: "comps", data: comps })
+    .then(response => {
+      callback(response);
+    });
+};
+export const sendFood = (food, callback) => {
+  axios
+    .post(PLUGIN_DIR + "/sendToDB.php", { name: "food", data: food })
     .then(response => {
       callback(response);
     });
