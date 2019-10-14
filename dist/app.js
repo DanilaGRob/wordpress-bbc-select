@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PLUGIN_DIR\", function() { return PLUGIN_DIR; });\nvar PLUGIN_DIR = \"http://dashyn-sait.local/wp-content/plugins/bbc-select-dgrobov\";\n\n//# sourceURL=webpack:///./constants.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PLUGIN_DIR\", function() { return PLUGIN_DIR; });\nvar PLUGIN_DIR = \"http://draugiskigamtai.tk/wp-content/plugins/bbc-select-dgrobov\";\n\n//# sourceURL=webpack:///./constants.js?");
 
 /***/ }),
 
