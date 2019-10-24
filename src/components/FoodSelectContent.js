@@ -84,7 +84,6 @@ export default class FoodSelectContent extends Component {
     const selectedFood = food.find(food => food.id == foodId);
     if (!loading && !loadingComps) {
       this.getContent(mainFoodComps, secondaryFoodComps, selectedFood);
-      console.log();
       return (
         <div className="foodSelectContent">
           <div className="iconContainer">
