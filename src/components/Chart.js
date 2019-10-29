@@ -5,6 +5,7 @@ export default class Chart extends Component {
   mult = 1;
   getLabels = data => {
     if (data[0].amount * 0.25 <= 1) {
+      console.log(data[0].amount * 0.25);
       this.mult = 100;
       // console.log(data[0]);
       // console.log(Math.round(data[0].amount * 0.25 * this.mult) / this.mult);
