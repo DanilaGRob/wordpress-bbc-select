@@ -39,9 +39,9 @@ export default class FoodSelectContent extends Component {
             <div className="typeDescription">
               Per metus jūsų suvartojama(s)
               {` ${selectedFood.name.toLowerCase()} prisideda `}
-              <span
-                style={{ color }}
-              >{`${annualCons.toLocaleString()}${units}`}</span>
+              <span style={{ color }}>{`${annualCons.toLocaleString(
+                "lt"
+              )}${units}`}</span>
               {` prie jūsų ${typeName.toLowerCase()} teršalų kiekio.`}
             </div>
             <ComparisonsContent
@@ -58,19 +58,20 @@ export default class FoodSelectContent extends Component {
         secondaryFoodComps.push(
           <Fragment key={uniqid()}>
             <span className="bold secondaryDescription">
-              Jūsų{" " + selectedFood.name.toLowerCase() + " "}
+              Jūsų{" " + selectedFood.name.toLowerCase("lt") + " "}
               vartojimas taip pat sunaudoja
             </span>
             <div className="comparison">
               <img src={comparison.image} />
+              <br />
               <span
                 className="bold"
                 style={{ color }}
-              >{`${annualCons.toLocaleString()}${units}`}</span>
+              >{`${annualCons.toLocaleString("lt")}${units}`}</span>
               {", "}
               lygus{" " + comparison.description}
               <span className="bold">
-                {compAmount.toLocaleString() + comparison.units}
+                {compAmount.toLocaleString("lt") + comparison.units}
               </span>
             </div>
           </Fragment>

@@ -16,7 +16,7 @@ export default class ComparisonsContent extends Component {
             <span className="comparisonDesc">
               {comparison.description}
               <span className="bold">
-                {compAmount.toLocaleString() + comparison.units}
+                {compAmount.toLocaleString("lt") + comparison.units}
               </span>
             </span>
           </div>
