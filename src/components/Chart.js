@@ -5,7 +5,7 @@ export default class Chart extends Component {
   mult = 1;
   getLabels = data => {
     if (data[0].amount * 0.25 < 1) {
-      mult = 10;
+      this.mult = 10;
     }
     return (
       <Fragment>
