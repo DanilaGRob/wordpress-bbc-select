@@ -50,9 +50,11 @@ export default class Chart extends Component {
       Math.ceil(data[0].amount * this.mult) / this.mult;
     return (
       <div className="chart">
-        <div className="chart-title">How {data[0].type} compare</div>
+        <div className="chart-title">
+          Koks skirtumas tarp {data[0].type} tipo produktų
+        </div>
         <div className="chart-description">
-          Kilograms of greenhouse gases per serving
+          Kilogramų šiltnamio efektą sukeliančių dujų vienoje porcijoje
         </div>
         <div className="chart-content">
           {data.map(data => {

@@ -22,7 +22,7 @@ export default class FrontEndApp extends Component {
             />
             <div className="content">
               <div className="title">
-                How do your food choices impact on the environment?
+                Kaip jūsų mitybos pasirinkimai veikia aplinką?
               </div>
               <FoodSelect />
             </div>
@@ -41,7 +41,7 @@ export default class FrontEndApp extends Component {
             />
             <div className="content">
               <div className="title">
-                How do your food choices impact on the environment?
+                Kaip jūsų mitybos pasirinkimai veikia aplinką?
               </div>
               <img
                 src={PLUGIN_DIR + "/src/imgs/loading.svg"}

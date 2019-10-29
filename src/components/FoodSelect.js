@@ -18,37 +18,37 @@ export default class FoodSelect extends Component {
       <Fragment>
         <div className="foodSelect">
           <TypesSelect
-            helperText="Which food would you like?"
-            emptyError="- Select food or drink -"
+            helperText="Kokio produkto norėtumėt?"
+            emptyError="- Išsirinkite produktą arba gėrimą -"
             ref={this.foodType}
             value={this.state.food}
             onChange={value => this.setState({ food: value })}
           />
           <SelectInputF
-            helperText="How often do you have it?"
-            emptyError="- Select how often -"
+            helperText="Kaip dažnai jį vartojate?"
+            emptyError="- Išsirinkite dažnumą -"
             ref={this.frequency}
             value={this.state.multiplier}
             onChange={value => this.setState({ multiplier: value })}
             options={[
               {
-                name: "Twice a day or more",
+                name: "2 arba daugiau kartų per dieną",
                 id: 2
               },
               {
-                name: "Once a day",
+                name: "Kartą per dieną",
                 id: 1
               },
               {
-                name: "3-5 times a week",
+                name: "3-5 kartus per savaitę",
                 id: 0.57
               },
               {
-                name: "1-2 times a week",
+                name: "1-2 kartus per savaitę",
                 id: 0.2142
               },
               {
-                name: "Never",
+                name: "Niekada",
                 id: 0
               }
             ]}
