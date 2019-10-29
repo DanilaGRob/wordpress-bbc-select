@@ -83,6 +83,7 @@ export default class FoodSelectContent extends Component {
     const mainFoodComps = [];
     const secondaryFoodComps = [];
     const selectedFood = food.find(food => food.id == foodId);
+    console.log(food);
     if (!loading && !loadingComps) {
       this.getContent(mainFoodComps, secondaryFoodComps, selectedFood);
       return (
