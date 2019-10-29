@@ -30,3 +30,4 @@ else {
     );
     echo json_encode($food_array);
 }
+
