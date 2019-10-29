@@ -53,7 +53,7 @@ export default class Chart extends Component {
     return (
       <div className="chart">
         <div className="chart-title">
-          Koks skirtumas tarp {FOOD_TYPES[data[0].type]} tipo produktų
+          Koks skirtumas tarp „{FOOD_TYPES[data[0].type]}“ tipo produktų
         </div>
         <div className="chart-description">
           Kilogramų šiltnamio efektą sukeliančių dujų vienoje porcijoje
