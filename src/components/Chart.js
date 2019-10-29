@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-
+import { FOOD_TYPES } from "../../constants";
 export default class Chart extends Component {
   formatedSelectedAmount = 0;
   mult = 1;
@@ -56,7 +56,7 @@ export default class Chart extends Component {
     return (
       <div className="chart">
         <div className="chart-title">
-          Koks skirtumas tarp {data[0].type} tipo produktų
+          Koks skirtumas tarp {FOOD_TYPES[data[0].type]} tipo produktų
         </div>
         <div className="chart-description">
           Kilogramų šiltnamio efektą sukeliančių dujų vienoje porcijoje
