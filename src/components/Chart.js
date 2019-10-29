@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { FOOD_TYPES } from "../../constants";
+import uniqid from "uniqid";
 export default class Chart extends Component {
   formatedSelectedAmount = 0;
   mult = 1;
   getLabels = data => {
+    console.log(this.mult);
     return (
       <Fragment>
         <div className="chart-column chart-column-bold">
@@ -59,7 +61,7 @@ export default class Chart extends Component {
         <div className="chart-content">
           {data.map(data => {
             return (
-              <Fragment>
+              <Fragment key={uniqid()}>
                 <div className="label">
                   <img src={data.image} />
                   <span
