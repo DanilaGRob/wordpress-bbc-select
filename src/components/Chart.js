@@ -4,6 +4,9 @@ export default class Chart extends Component {
   formatedSelectedAmount = 0;
   mult = 1;
   getLabels = data => {
+    if (data[0].amount * 0.25 < 1) {
+      mult = 10;
+    }
     return (
       <Fragment>
         <div className="chart-column chart-column-bold">
