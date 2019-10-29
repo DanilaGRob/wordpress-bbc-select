@@ -46,11 +46,13 @@
       .chart-column {
         border-right: 1px solid #8c8c8c8c;
         position: relative;
+        display: grid;
         span {
           position: absolute;
           top: -1.4em;
           line-height: 1em;
-          right: -5px;
+          transform: translateX(50%);
+          justify-self: end;
         }
       }
       .chart-column-bold {
