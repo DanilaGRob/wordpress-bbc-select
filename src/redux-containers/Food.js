@@ -24,32 +24,32 @@ const mapStateToProps = state => ({
       options={[
         {
           id: "drinks",
-          value: "drinks",
+          value: "gėrimai",
           typeName: "drinks"
         },
         {
           id: "fruit & veg",
-          value: "fruit & veg",
+          value: "vaisiai ir daržovės",
           typeName: "fruit & veg"
         },
         {
           id: "proteins",
-          value: "proteins",
+          value: "proteinai",
           typeName: "proteins"
         },
         {
           id: "starches",
-          value: "starches",
+          value: "krakmolai",
           typeName: "starches"
         },
         {
           id: "chocolates",
-          value: "chocolates",
+          value: "šokoladas",
           typeName: "chocolates"
         },
         {
           id: "milks",
-          value: "milks",
+          value: "pienas",
           typeName: "milks"
         }
       ]}
