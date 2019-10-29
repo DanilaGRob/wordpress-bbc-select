@@ -47,7 +47,7 @@ export default class Chart extends Component {
     });
     if (data[0].amount * 0.25 <= 1) {
       this.mult = 100;
-    }
+    } else this.mult = 1;
     this.formatedSelectedAmount =
       Math.ceil(data[0].amount * this.mult) / this.mult;
     return (
