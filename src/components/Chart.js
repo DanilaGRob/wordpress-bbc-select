@@ -4,6 +4,7 @@ export default class Chart extends Component {
   formatedSelectedAmount = 0;
   mult = 1;
   getLabels = data => {
+    console.log(data[0].amount);
     if (data[0].amount * 0.25 < 1) {
       this.mult = 10;
     }
