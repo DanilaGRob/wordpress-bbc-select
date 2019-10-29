@@ -4,12 +4,6 @@ export default class Chart extends Component {
   formatedSelectedAmount = 0;
   mult = 1;
   getLabels = data => {
-    if (data[0].amount * 0.25 <= 1) {
-      console.log(data[0].amount * 0.25);
-      this.mult = 100;
-      // console.log(data[0]);
-      // console.log(Math.round(data[0].amount * 0.25 * this.mult) / this.mult);
-    }
     return (
       <Fragment>
         <div className="chart-column chart-column-bold">
@@ -49,8 +43,8 @@ export default class Chart extends Component {
       }
       return 0;
     });
-    if (data[0].amount <= 1) {
-      this.mult = 10;
+    if (data[0].amount * 0.25 <= 1) {
+      this.mult = 100;
     }
     this.formatedSelectedAmount =
       Math.ceil(data[0].amount * this.mult) / this.mult;
